@@ -16,7 +16,7 @@ BuildRequires:  python-devel bzr
 BuildRequires:  gettext
 Requires:       bzr >= 0.16 pygtk2.0
 # These enable the commit-notify and nautilus browse functionality resp.  But
-# neither are packaged for Fedora yet.
+# neither are packaged for Mandriva yet.
 #Requires:       bzr-dbus
 #Requires:       python-nautilus
 
