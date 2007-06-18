@@ -9,7 +9,7 @@ License:        GPL
 URL:            http://bazaar-vcs.org/bzr-gtk
 Source0:        http://samba.org/~jelmer/bzr/bzr-gtk-%{version}.tar.gz
 Patch0:         bzr-gtk-disable-notifier.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildArch:      noarch
 BuildRequires:  python-devel bzr
