@@ -26,7 +26,7 @@ Bazaar operations.
 
 %package -n olive
 Summary: Graphical frontend to the bazaar revision control system
-Group: Development/Tools
+Group: Development/Other
 Requires: %{name} = %{version}-%{release}
 
 %description -n olive
