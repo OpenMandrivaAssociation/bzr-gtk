@@ -1,6 +1,6 @@
 # based on http://cvs.fedora.redhat.com/viewcvs/devel/bzr-gtk/?root=extras
 Name:           bzr-gtk
-Version:        0.17.0
+Version:        0.18.0
 Release:        %mkrel 1
 Summary:        Bazaar plugin for GTK+ interfaces to most Bazaar operations
 
@@ -44,6 +44,8 @@ python setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 python setup.py install --skip-build --root $RPM_BUILD_ROOT
+# as we don't support dbus extension yet
+rm -f %{buildroot}/%{_datadir}/applications/bzr-notify.desktop
 # mv $RPM_BUILD_ROOT%{python_sitelib}/bzrlib/plugins/gtk/nautilus* $RPM_BUILD_ROOT%{_prefix}/lib/nautilus/extensions-1.0/python/
 
 %clean
@@ -55,6 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING README
 %py_puresitedir/bzrlib/plugins/gtk/
 %py_puresitedir/*egg-info
+%{_datadir}/applications/bazaar-properties.desktop
 
 %files -n olive
 %defattr(-,root,root,-)
