@@ -9,12 +9,14 @@ License:        GPL
 URL:            http://bazaar-vcs.org/bzr-gtk
 Source0:        http://samba.org/~jelmer/bzr/bzr-gtk-%{version}.tar.gz
 Patch0:         bzr-gtk-disable-notifier.patch
+Patch1:         bzr-gtk-0.94-setup-trailling-newline.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildArch:      noarch
 BuildRequires:  python-devel bzr
 BuildRequires:  gettext
 Requires:       bzr >= 0.17 pygtk2.0
+Requires:       pygtk-2.0
 # These enable the commit-notify and nautilus browse functionality resp.  But
 # neither are packaged for Mandriva yet.
 #Requires:       bzr-dbus
@@ -35,7 +37,8 @@ expose all core functionality of Bazaar in a user-friendly GUI.
 
 %prep
 %setup -q
-%patch -p1 -b .disable
+%patch0 -p1 -b .disable
+%patch1 -p0 -b .newline
 
 %build
 python setup.py build
@@ -58,14 +61,21 @@ rm -rf $RPM_BUILD_ROOT
 %py_puresitedir/bzrlib/plugins/gtk/
 %py_puresitedir/*egg-info
 %{_datadir}/applications/bazaar-properties.desktop
+%{_datadir}/applications/bzr-handle-patch.desktop
+%{_datadir}/application-registry/bzr-gtk.applications
+%{_datadir}/%{name}
+%{_datadir}/pixmaps/bzr-icon-64.png
+%{_iconsdir}/hicolor/scalable/emblems/*
+%{_libdir}/nautilus/extensions-2.0/python/nautilus-bzr.py
 
 %files -n olive
 %defattr(-,root,root,-)
 %{_bindir}/*
-%py_puresitedir/olive
-%{_datadir}/olive/
+%py_puresitedir/bzrlib/plugins/gtk/olive
+%{_datadir}/olive
 %{_datadir}/pixmaps/olive-gtk.png
 %{_datadir}/applications/olive-gtk.desktop
+%{_datadir}/locale/*
 
 #%files nautilus
 #%{_prefix}/lib/nautilus/extensions-1.0/python/*
