@@ -15,8 +15,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildArch:      noarch
 BuildRequires:  python-devel bzr
 BuildRequires:  gettext
-Requires:       bzr >= 0.17 pygtk2.0
-Requires:       pygtk-2.0
+Requires:       bzr >= 1.0
+Requires:       pygtk2.0
+Requires:       pygtk2.0-libglade
 # These enable the commit-notify and nautilus browse functionality resp.  But
 # neither are packaged for Mandriva yet.
 #Requires:       bzr-dbus
