@@ -1,13 +1,13 @@
 # based on http://cvs.fedora.redhat.com/viewcvs/devel/bzr-gtk/?root=extras
 Name:           bzr-gtk
-Version:        0.95.0
-Release:        %mkrel 2
+Version:        0.96.2
+Release:        %mkrel 1
 Summary:        Bazaar plugin for GTK+ interfaces to most Bazaar operations
 
 Group:          Development/Python
 License:        GPL
 URL:            http://bazaar-vcs.org/bzr-gtk
-Source0:        http://samba.org/~jelmer/bzr/bzr-gtk-%{version}.tar.gz
+Source0:	http://edge.launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildArch:      noarch
@@ -49,13 +49,13 @@ python setup.py build
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-python setup.py install --skip-build --root $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/nautilus/extensions-1.0/python/
-mv $RPM_BUILD_ROOT%{python_sitelib}/bzrlib/plugins/gtk/nautilus* $RPM_BUILD_ROOT%{_prefix}/lib/nautilus/extensions-1.0/python/
+rm -rf %{buildroot}
+python setup.py install --skip-build --root %{buildroot}
+mkdir -p %{buildroot}%{_prefix}/lib/nautilus/extensions-1.0/python/
+mv %{buildroot}%{python_sitelib}/bzrlib/plugins/gtk/nautilus* %{buildroot}%{_prefix}/lib/nautilus/extensions-1.0/python/
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 
 %files
