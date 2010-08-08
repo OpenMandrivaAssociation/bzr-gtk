@@ -1,13 +1,14 @@
 # based on http://cvs.fedora.redhat.com/viewcvs/devel/bzr-gtk/?root=extras
 Name:           bzr-gtk
 Version:        0.98.0
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        Bazaar plugin for GTK+ interfaces to most Bazaar operations
 
 Group:          Development/Python
 License:        GPL
 URL:            http://bazaar-vcs.org/bzr-gtk
 Source0:	http://edge.launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
+Patch1:		bzr-compat.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildArch:      noarch
@@ -43,6 +44,7 @@ bzr-gtk integration with the nautilus file manager for gnome.
 
 %prep
 %setup -q
+%patch1 -p0
 
 %build
 python setup.py build
