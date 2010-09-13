@@ -1,14 +1,13 @@
 # based on http://cvs.fedora.redhat.com/viewcvs/devel/bzr-gtk/?root=extras
 Name:           bzr-gtk
-Version:        0.98.0
-Release:        %mkrel 2
+Version:        0.99.0
+Release:        %mkrel 1
 Summary:        Bazaar plugin for GTK+ interfaces to most Bazaar operations
 
 Group:          Development/Python
 License:        GPL
 URL:            http://bazaar-vcs.org/bzr-gtk
 Source0:	http://edge.launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
-Patch1:		bzr-compat.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildArch:      noarch
@@ -24,15 +23,6 @@ Requires:	python-gtksourceview
 bzr-gtk is a plugin for Bazaar that aims to provide GTK+ interfaces to most
 Bazaar operations.
 
-%package -n olive
-Summary: Graphical frontend to the bazaar revision control system
-Group: Development/Other
-Requires: %{name} = %{version}-%{release}
-
-%description -n olive
-Olive aims to be a full-featured graphical frontend for Bazaar.  It will
-expose all core functionality of Bazaar in a user-friendly GUI.
-
 %package nautilus
 Summary: Nautilus integration for bzr-gtk
 Group: Development/Other
@@ -44,7 +34,6 @@ bzr-gtk integration with the nautilus file manager for gnome.
 
 %prep
 %setup -q
-%patch1 -p0
 
 %build
 python setup.py build
@@ -52,7 +41,8 @@ python setup.py build
 
 %install
 rm -rf %{buildroot}
-python setup.py install --skip-build --root %{buildroot}
+touch credits.pickle
+python setup.py install --root %{buildroot}
 mkdir -p %{buildroot}%{_prefix}/lib/nautilus/extensions-1.0/python/
 mv %{buildroot}%{python_sitelib}/bzrlib/plugins/gtk/nautilus* %{buildroot}%{_prefix}/lib/nautilus/extensions-1.0/python/
 
@@ -65,6 +55,8 @@ rm -rf %{buildroot}
 %doc COPYING README
 %py_puresitedir/bzrlib/plugins/gtk/
 %py_puresitedir/*egg-info
+%{_bindir}/bzr-handle-patch
+%{_bindir}/bzr-notify
 %{_datadir}/applications/bazaar-properties.desktop
 %{_datadir}/applications/bzr-handle-patch.desktop
 %{_datadir}/applications/bzr-notify.desktop
@@ -72,15 +64,6 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}
 %{_datadir}/pixmaps/bzr-icon-64.png
 %{_iconsdir}/hicolor/scalable/emblems/*
-
-%files -n olive
-%defattr(-,root,root,-)
-%{_bindir}/*
-%py_puresitedir/bzrlib/plugins/gtk/olive
-%{_datadir}/olive
-%{_datadir}/pixmaps/olive-gtk.png
-%{_datadir}/applications/olive-gtk.desktop
-%{_datadir}/locale/*
 
 %files nautilus
 %{_prefix}/lib/nautilus/extensions-1.0/python/*
