@@ -1,7 +1,7 @@
 # based on http://cvs.fedora.redhat.com/viewcvs/devel/bzr-gtk/?root=extras
 Name:           bzr-gtk
-Version:        0.99.0
-Release:        %mkrel 4
+Version:        0.100.0
+Release:        %mkrel 1
 Summary:        Bazaar plugin for GTK+ interfaces to most Bazaar operations
 
 Group:          Development/Python
@@ -62,6 +62,7 @@ rm -rf %{buildroot}
 %{_datadir}/applications/bzr-notify.desktop
 %{_datadir}/application-registry/bzr-gtk.applications
 %{_datadir}/%{name}
+%{_datadir}/icons/hicolor/scalable/apps/bzr-panel.svg
 %{_datadir}/pixmaps/bzr-icon-64.png
 %{_iconsdir}/hicolor/scalable/emblems/*
 
