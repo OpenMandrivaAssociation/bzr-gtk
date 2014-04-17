@@ -1,7 +1,7 @@
 # based on http://cvs.fedora.redhat.com/viewcvs/devel/bzr-gtk/?root=extras
 Name:           bzr-gtk
 Version:        0.104.0
-Release:        2
+Release:        3
 Summary:        Bazaar plugin for GTK+ interfaces to most Bazaar operations
 
 Group:          Development/Python
@@ -14,11 +14,9 @@ BuildArch:      noarch
 BuildRequires:  python-devel bzr
 BuildRequires:  gettext
 Requires:       bzr >= 2.1
-Requires:       pygtk2.0
-Requires:       pygtk2.0-libglade
-Requires:	python-cairo
-Requires:	python-gtksourceview
-
+Requires:	typelib(GtkSource) = 3.0
+Requires:	typelib(Gtk) = 3.0
+Requires:	typelib(PangoCairo) = 1.0
 %description
 bzr-gtk is a plugin for Bazaar that aims to provide GTK+ interfaces to most
 Bazaar operations.
