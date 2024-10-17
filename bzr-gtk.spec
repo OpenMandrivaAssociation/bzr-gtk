@@ -6,7 +6,7 @@ Summary:        Bazaar plugin for GTK+ interfaces to most Bazaar operations
 
 Group:          Development/Python
 License:        GPL
-URL:            http://bazaar-vcs.org/bzr-gtk
+URL:            https://bazaar-vcs.org/bzr-gtk
 Source0:	http://edge.launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
